@@ -10,6 +10,7 @@ systemctl daemon-reload
 systemctl enable vpnserver --now
 PASSWORD=`pwgen -c 20`
 PASSWORD_USER=`pwgen -c 20`
+sleep 5
 /opt/vpnserver/vpncmd /SERVER 127.0.0.1:443 /HUB /CMD ServerPasswordSet $PASSWORD
 /opt/vpnserver/vpncmd /SERVER 127.0.0.1:443 /HUB:default /CMD SecureNatEnable
 /opt/vpnserver/vpncmd /SERVER 127.0.0.1:443 /HUB:default /CMD NatEnable
