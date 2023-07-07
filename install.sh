@@ -9,6 +9,6 @@ wget -O /etc/systemd/system/vpnserver.service https://raw.githubusercontent.com/
 systemctl daemon-reload
 systemctl enable vpnserver --now
 PASSWORD=`pwgen -c 20`
-/opt/vpnserver/vpncmd /SERVER 127.0.0.1 /HUB:default /CMD ServerPasswordSet $PASSWORD
+/opt/vpnserver/vpncmd /SERVER 127.0.0.1:443 /HUB /CMD ServerPasswordSet $PASSWORD
 
-echo "Password - $PASSWORD"
+echo "\nPassword - $PASSWORD"
