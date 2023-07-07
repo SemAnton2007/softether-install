@@ -9,14 +9,14 @@ wget -O /etc/systemd/system/vpnserver.service https://raw.githubusercontent.com/
 systemctl daemon-reload
 systemctl enable vpnserver --now
 PASSWORD=`pwgen -c 20`
-PASSWORD-USER=`pwgen -c 20`
+PASSWORD_USER=`pwgen -c 20`
 /opt/vpnserver/vpncmd /SERVER 127.0.0.1:443 /HUB /CMD ServerPasswordSet $PASSWORD
 /opt/vpnserver/vpncmd /SERVER 127.0.0.1:443 /HUB:default /CMD SecureNatEnable
 /opt/vpnserver/vpncmd /SERVER 127.0.0.1:443 /HUB:default /CMD NatEnable
 /opt/vpnserver/vpncmd /SERVER 127.0.0.1:443 /HUB:default /CMD DHCPEnable
 
 /opt/vpnserver/vpncmd /SERVER 127.0.0.1:443 /HUB:default /CMD UserCreate user /GROUP:none /REALNAME:none /NOTE:none
-/opt/vpnserver/vpncmd /SERVER 127.0.0.1:443 /HUB:default /CMD UserPasswordSet user /PASSWORD:$PASSWORD-USER
+/opt/vpnserver/vpncmd /SERVER 127.0.0.1:443 /HUB:default /CMD UserPasswordSet user /PASSWORD:$PASSWORD_USER
 
 echo "Admin Password - $PASSWORD"
-echo "User Password - $PASSWORD-USER"
+echo "User Password - $PASSWORD_USER"
