@@ -8,7 +8,7 @@ make
 wget -O /etc/systemd/system/vpnserver.service https://raw.githubusercontent.com/SemAnton2007/softether-install/main/vpnserver.service
 systemctl daemon-reload
 systemctl enable vpnserver --now
-pwgen -c 20
+PASSWORD=`pwgen -c 20`
 /opt/vpnserver/vpncmd /SERVER 127.0.0.1 /HUB:default /CMD ServerPasswordSet $PASSWORD
 
 echo "Password - $PASSWORD"
